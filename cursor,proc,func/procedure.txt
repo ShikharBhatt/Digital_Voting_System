@@ -1,0 +1,29 @@
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_candidate`(IN vid INT)
+BEGIN
+SELECT
+    CAND_ID,
+    FNAME,
+    MNAME,
+    LNAME,
+    PARTY_NAME
+FROM
+    candidate_table
+WHERE
+    CAND_ID IN(
+    SELECT
+        CAND_ID
+    FROM
+        cand_cons_table
+    WHERE
+        CT_CONS_ID =(
+        SELECT
+            CONS_ID
+        FROM
+            voter_table
+        WHERE
+            VOTER_ID = vid
+    )
+);
+END$$
+DELIMITER ;

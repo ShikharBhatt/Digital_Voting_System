@@ -1,0 +1,26 @@
+DELIMITER $$
+CREATE PROCEDURE `wturn`()
+BEGIN
+   DECLARE
+       i INT DEFAULT 0; DECLARE done INT DEFAULT 0; DECLARE cid INT; DECLARE cur CURSOR FOR
+   SELECT
+       VOTER_ID
+   FROM
+       voter_table
+   WHERE
+       sex = 'f' AND
+   STATUS
+       = 'yes'; DECLARE CONTINUE
+   HANDLER FOR NOT FOUND
+SET
+   done = 1; OPEN cur; ret : LOOP FETCH cur
+INTO
+   cid; IF done THEN LEAVE ret;
+END IF;
+SET
+   i = i +1;
+END LOOP; CLOSE cur;
+   SELECT i AS TURNOUT,(SELECT COUNT(*) FROM voter_table WHERE SEX
+                        ='F')AS 'TOTAL WOMEN';
+END$$
+DELIMITER ;

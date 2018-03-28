@@ -1,0 +1,189 @@
+50 Queries;
+1. Display all the information of the EMP table?
+mysql> select * from employee;
+
+--------------------------------------------------------------------------------------------------------
+2. Display unique Jobs from Project table?
+mysql> select proj_name from project;
+
+--------------------------------------------------------------------------------------------------------
+3. List the Employees in the asc order of their Salaries?
+mysql> select * from employee
+    -> order by salary;
+
+--------------------------------------------------------------------------------------------------------
+4. List the details of the Employees in asc order of the Dptnos and desc of Jobs? 
+SELECT *
+FROM EMPLOYEE
+ORDER BY Dept_No ASC JOB DESC
+
+5. Display all the unique job groups in the descending order? 
+mysql> select proj_name from project;
+
+6. Display all the details of all ‘Mgrs’ 
+mysql> select e.* from employee e,department
+    -> where e.ssn=eid;
+
+--------------------------------------------------------------------------------------------------------
+7. List the Employees who joined before 1981. 
+SELECT * FROM EMPLOYEE
+WHERE DOJ < '1981-01-01';
+
+8. List the Empno, Ename, Sal, Daily sal of all Employees in the asc order of Annsal.
+mysql> select SSN,Fname,salary,salary/30 as daily_sal,salary*12 as Ann_sal
+    -> from employee
+    -> order by Ann_sal;
+
+--------------------------------------------------------------------------------------------------------
+9. Display the Empno, Ename, job, Hiredate, Exp of all Mgrs 
+select e.ssn,e.fname from employee,department
+where e.ssn=eid;
+
+10. List the Empno, Ename, Sal, Exp of all Employees working for Mgr 101.
+mysql> select * from employee where sup_id=101;
+
+--------------------------------------------------------------------------------------------------------
+11. Display all the details of the Employees whose Comm. Is more than their Sal. 
+select * from employee
+where comm>salary;
+
+12. List the Employees in the asc order of Designations of those DOB after the second half of 1985. 
+mysql> select * from employee where DOB > '1985-06-30';
+
+--------------------------------------------------------------------------------------------------------
+13. List the Employees along with their Exp and Daily Sal is more than Rs.2000.
+mysql> select SSN,Fname,Mname,Lname,salary/30 as new_sal
+    -> from employee
+    -> having new_sal>2000;
+
+--------------------------------------------------------------------------------------------------------
+14. List the Employees who are either ‘CLERK’ or ‘ANALYST’ in the Desc order. 
+select * from employee
+where job='CLERK' or job='ANALYST'
+order by ssn desc;
+
+15. List the Employees who joined on 1-MAY-81,3-DEC-81,17-DEC-81,19-JAN-80 in asc order of seniority. 
+select * from employee where doj='1981-05-01' or doj='1981-12-03' or doj='1981-12-17' or doj='1980-01-19'
+order by doj desc;
+
+16. List the Employee who are working for the Deptno 10 or20. 
+mysql> select * from employee
+    -> where dept_no=1 or dept_no=2;
+
+--------------------------------------------------------------------------------------------------------
+17. List the Employees who have DOB in the year 92.
+mysql> select * from employee where DOB like '1992%';
+
+--------------------------------------------------------------------------------------------------------
+18. List the Employees who DOB in the month of May.
+mysql> select * from employee where DOB like '%-05-%';
+
+--------------------------------------------------------------------------------------------------------
+19. List the Employees Who Annual monthly ranging from 22000 and 45000. 
+mysql> select SSN,Fname,Lname,Salary from employee
+    -> where salary between 22000 and 45000;
+  
+--------------------------------------------------------------------------------------------------------
+20. List the Enames those are having five characters in their Names. 
+mysql> select Fname from employee
+    -> where Fname like '_____';
+
+--------------------------------------------------------------------------------------------------------
+21. List the Enames those are starting with ‘S’ and with five characters. 
+mysql> select Fname from employee
+    -> where Fname like 'S____';
+
+--------------------------------------------------------------------------------------------------------
+22. List the Employees those are having four chars and third character must be ‘r’. 
+mysql> select Fname from employee
+    -> where Fname like '__r_';
+Empty set (0.00 sec)
+
+--------------------------------------------------------------------------------------------------------
+23. List the Five character names starting with ‘S’ and ending with ‘I’. 
+mysql> select Fname from employee
+    -> where Fname like 'S%I';
+
+--------------------------------------------------------------------------------------------------------
+24. List the Employees who joined in January. 
+25. List the Employees who joined in the month of which second character is ‘a’.
+26. List the Employees whose daily Sal is four digit number ending with Zero. 
+mysql> select *,salary/30 as daily_sal from employee
+    -> where salary/30 like '___0.0000';
+
+--------------------------------------------------------------------------------------------------------
+27. List the Employees whose names having a character set ‘ll’ together. 
+28. List the Employees those who have DOB in 80’s.
+mysql> select * from employee where DOB like '198%';
+
+--------------------------------------------------------------------------------------------------------
+29. List the Employees who does not belong to Deptno 20.
+mysql> select * from employee
+    -> where dept_no!=2;
+
+--------------------------------------------------------------------------------------------------------
+30. List all the Employees except ‘PRESIDENT’ & ‘MGR” in asc order of Salaries. 
+mysql> select * from employee
+    -> where SSN!=ALL(select EID from department);
+
+--------------------------------------------------------------------------------------------------------
+31. List all the Employees who have DOB before 1985.
+mysql> select * from employee where DOB < '1985-%';
+
+-------------------------------------------------------------------------------------------------------- 
+32. List the Employees whose Empno not starting with digit 10. 
+mysql> select * from employee
+    -> where SSN NOT LIKE '10%';
+
+-------------------------------------------------------------------------------------------------------- 
+33. List the Employees who are working under ‘MGR’. 
+mysql> select * from employee
+    -> where SUP_ID=ANY(select EID from department);
+
+-------------------------------------------------------------------------------------------------------- 
+34. List the Employees who joined in any year but not belongs to the month of March. 
+35. List all the Clerks of Deptno 20. 
+36. List the Employees of Deptno 30 or 10 joined in the year 1981. 
+
+37. Display the details of Sumit. 
+mysql> select * from employee where Fname='Sumit';
+
+-------------------------------------------------------------------------------------------------------- 
+38. Display the location of Sumit. 
+mysql> select p.location from project p inner join works_on w on p.proj_name=w.proj_name
+    -> where w.ssn=(select ssn from employee where Fname='Sumit');
+
+-------------------------------------------------------------------------------------------------------- 
+39. List the total information of EMP table along with DNAME and Loc of all the emp.
+mysql> select e.*,d.Dept_name,p.location
+    -> from employee e inner join department d
+    -> on e.dept_no=d.dept_no
+    -> inner join project p
+    -> on d.dept_no=p.dept_no;
+
+-------------------------------------------------------------------------------------------------------- 
+40. List the Empno, Ename, Sal, Dname of all the ‘MGRS’ and ‘ANALYST’ 
+mysql> select e.SSN,e.Fname,e.Lname,e.salary,d.dept_name
+    -> from department d inner join employee e
+    -> on d.eid=e.ssn;
+
+-------------------------------------------------------------------------------------------------------- 
+43. Display the total information of the Employees along with Grades in the asc order
+select * from employee order by grades asc;
+-------------------------------------------------------------------------------------------------------- 
+48. List the details of the Depts along with Empno, Ename or without the Employees 
+mysql> select d.*,e.ssn,e.Fname
+    -> from department d left outer join employee e
+    -> on d.dept_no=e.dept_no;
+
+-------------------------------------------------------------------------------------------------------- 
+49. List the details of the Employees whose Salaries more than the employee Sumit.
+mysql> select * from employee
+    -> where salary>(select salary from employee where Fname='Sumit');
+
+-------------------------------------------------------------------------------------------------------- 
+50. List the Employees whose Jobs are same as Sakshi.
+mysql> select e.* from employee e inner join works_on w on e.ssn=w.ssn
+    -> where w.proj_name=(select w.proj_name from works_on w inner join employee e on w.ssn=e.ssn where e.Fname='Sakshi');
+
+-------------------------------------------------------------------------------------------------------- 

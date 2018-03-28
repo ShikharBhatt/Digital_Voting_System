@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<head>
+<title>Voter Form</title>
+</head>
+<body>
+<script>
+
+</script>
+<form action="voter_script.php" name="Voter_Registration" method="post">
+Field Officer ID :<input type="number" name="FO_ID">
+Constituency Id :<input type="text" name="CONS_ID"/><br>
+Title:
+<select name="TITLE">
+ <option value="Mr">Mr</option>
+  <option value="Mrs">Mrs</option>
+  <option value="Ms">Ms</option>
+  <option value="Dr">Dr</option>
+</select>
+<br>
+First Name : <input type="text" name="FNAME"/><br>
+Middle Name : <input type="text" name="MNAME"/><br>
+Last Name : <input type="text" name="LNAME"/><br>
+Sex : <input type="radio" name="SEX" value="M" checked>Male
+<input type="radio" name="SEX" value="F" >Female
+<input type="radio" name="SEX" value="O" >Other<br>
+DOB : <input type="text" name="DOB"><br>
+Aadhaar card Number : <input type="number" name="AADHAAR"><br>
+<td align=right>Street Address : 
+			<td align=left><input type="text" name="STREET_ADD"/>
+State : <input type="text" name="STATE"><br>
+City : <input type="text" name="CITY"><br>
+District : <input type="text" name="DISTRICT"><br>
+Pincode : <input type="number" name="PINCODE"><br>
+Place of Birth : <input type="text" name="POB"><br>
+Education Level : <input type="text" name="EDU_LEVEL"><br>
+Religion : <input type="text" name="RELIGION"><br>
+Caste : <input type="text" name="CASTE"><br>
+Mother Tongue : <input type="text" name="NATIVE_LANG"><br>
+Income : <input type="number" name="INCOME"><br>
+Physically Challenged :<input type="radio" name="PHY_CHAL" value="YES">YES
+<input type="radio" name="PHY_CHAL" value="NO" checked>NO<br>
+Occupation : <input type="text" name="OCCP"><br>
+Mob No : <input type="number" name="MOB_NO"><br>
+Email-Id : <input type="email" name="EMAIL"><br>
+Are you an overseas elector ? <br>
+<input type="radio" name="OSE" value="YES">YES
+<input type="radio" name="OSE" value="NO" checked>NO<br>
+Are you an service elector ? :<input type="radio" name="SERV" value="YES">YES
+<input type="radio" name="SERV" value="NO" checked>NO<br>
+<!--
+Aadhaar Upload : <input type="file" name="AADHAAR_PROOF" accept="pdf/*"><br>
+Photo Upload : <input type="file" name="PHOTO" accept="image/*"><br> 
+Residence Proof  : <input type="file" name="RESIDENT_PROOF" accept="pdf/*"><br> -->
+<input type="submit" name="SUB" value="Submit">
+</form>
+</body>
+</html>

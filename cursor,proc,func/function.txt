@@ -1,0 +1,24 @@
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` FUNCTION `pass_gen`(vid INT) RETURNS int(11)
+BEGIN
+    DECLARE
+        age INT; DECLARE pass VARCHAR(15); DECLARE flag INT DEFAULT 0;
+    SELECT
+        DATEDIFF(SYSDATE(), DOB),
+        PASSWORD
+    INTO
+        age,
+        pass
+    FROM
+        voter_table
+    WHERE
+        VOTER_ID = vid; IF age < 6575 THEN
+    SET
+        flag = 1;
+        END IF; IF age >= 6575 AND pass <> '*ELEC*' THEN
+    SET
+        flag = 2;
+END IF;
+RETURN flag;
+END$$
+DELIMITER ;

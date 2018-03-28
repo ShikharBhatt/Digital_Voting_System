@@ -1,0 +1,13 @@
+Welcome
+		
+		1. Paste both the folders i.e. DVS and uploads in the htdocs directory of xampp.
+
+		2. Export dvs.sql in your mysql database.
+
+		3. Open xampp
+
+			a. For voter and candidate registeration go in registeratio_portal folder and start with modal_login.php .
+
+			b. For voting go in the voting_portal folder and start with vportalfo_final.php .
+
+			c. For website go to the Website folder and start User_Website.php .

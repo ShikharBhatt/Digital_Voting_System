@@ -1,0 +1,34 @@
+jquery livecount
+    var previous='';
+  var myint=NULL;
+$(document).ready(function(){
+  $('#cons').on('change',function(){
+    var str=$(this).val();
+    if(previous='')
+    {
+      previous=str;
+    }
+    else if(previous!=str)
+    {
+      previous=str;
+      clearInterval(myint);
+    }
+    myint=setInterval(function(){
+      if(str="")
+      {
+        $('#result').html(html);
+      }
+      else
+      {
+        $.ajax({
+          type:'GET',
+          url='count.php',
+          data='q='+str,
+          success:function(html){
+            $('#result').html(this.responseText);
+          }
+        })
+      }
+    },1000);
+  })
+})

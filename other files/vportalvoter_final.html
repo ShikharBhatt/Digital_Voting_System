@@ -1,0 +1,20 @@
+<html>
+<?php
+session_start();
+?>
+<head>
+ <title>Voter Login</title>
+ <link rel="stylesheet" type="text/css" href="login_style.css"> 
+</head>
+<body background="much_patriotism.jpg" style="background-position: center;">
+<div class="login-page">
+  <div class="form">
+    <form class="login-form" name="vportalvoter" action="vportalvoter_verify.php" method="post">
+      <input type="text" placeholder="Voter ID" minlength="10" maxlength="10" name="V_ID" required/>
+      <input type="password" placeholder="Password" name="V_PASS" required/>
+      <button type="submit">login</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>
